@@ -29,3 +29,9 @@ export type VehicleAdditionalProducts = {
 export type VehicleSegment = 'C' | 'D' | 'E' | 'SUV';
 
 export type VehicleFuelType = 'gasoline' | 'hybrid' | 'ev';
+
+export type VehicleCategory = {
+  id: number;
+  segment: string;
+  content: string;
+};

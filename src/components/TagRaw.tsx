@@ -4,10 +4,15 @@ import { flexBox } from '../styles/mixin';
 type TagRawProps = {
   content: string;
   customStyle: FlattenInterpolation<ThemeProps<unknown>>;
+  onClick?: () => void;
 };
 
-function TagRaw({ content, customStyle }: TagRawProps) {
-  return <Container customStyle={customStyle}>{content}</Container>;
+function TagRaw({ content, customStyle, onClick }: TagRawProps) {
+  return (
+    <Container customStyle={customStyle} onClick={onClick}>
+      {content}
+    </Container>
+  );
 }
 
 export default TagRaw;
