@@ -15,9 +15,7 @@ function Header({ hasBackButton = false, title }: HeaderProps) {
 
   return (
     <Container>
-      <Edge onClick={handleClick} hasPointer>
-        <FiArrowLeft />
-      </Edge>
+      <Edge hasPointer>{hasBackButton && <FiArrowLeft onClick={handleClick} />}</Edge>
 
       {title}
 
@@ -43,9 +41,9 @@ const Edge = styled.div<{ hasPointer?: boolean }>`
   width: 24px;
   height: 24px;
   font-size: 24px;
-  cursor: ${({ hasPointer }) => (hasPointer ? 'pointer' : 'auto')};
 
   > svg {
     transform: translateX(-4px);
+    cursor: ${({ hasPointer }) => (hasPointer ? 'pointer' : 'auto')};
   }
 `;
