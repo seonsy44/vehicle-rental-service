@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { flexBox } from '../../styles/mixin';
 import { VehicleCategory } from '../../types';
-import vehicleCategory from '../../utils/const';
+import { vehicleCategory } from '../../utils/const';
 import TagLarge from '../../components/TagLarge';
 
 function Category() {
