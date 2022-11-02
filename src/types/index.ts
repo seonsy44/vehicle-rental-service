@@ -35,3 +35,9 @@ export type VehicleCategory = {
   segment: string;
   content: string;
 };
+
+export type CategoryValues = {
+  id: number;
+  segment: VehicleSegment | '';
+  content: string;
+};

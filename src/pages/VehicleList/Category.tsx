@@ -1,25 +1,36 @@
 import { useState } from 'react';
+import {} from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { flexBox } from '../../styles/mixin';
-import { VehicleCategory } from '../../types';
-import { vehicleCategory } from '../../utils/const';
+import { VehicleSegment } from '../../types';
+import { vehicleSegmentCategory } from '../../utils/const';
 import TagLarge from '../../components/TagLarge';
 
-function Category() {
-  const [activeTag, setActiveTag] = useState(vehicleCategory[0]);
+type CategoryProps = {
+  setSearchParams: (nextInit?: Record<string, string | string[]>) => void;
+  segment: VehicleSegment | '';
+};
 
-  const handleClick = (tag: VehicleCategory) => () => {
+function Category({ setSearchParams, segment }: CategoryProps) {
+  const [activeTag, setActiveTag] = useState(segment);
+
+  const handleClick = (tag: VehicleSegment | '') => () => {
     setActiveTag(tag);
+    if (!tag.length) {
+      setSearchParams({});
+      return;
+    }
+    setSearchParams({ segment: tag });
   };
 
   return (
     <Container>
-      {vehicleCategory.map((tag) => (
+      {vehicleSegmentCategory.map((tag) => (
         <TagLarge
           key={tag.id}
           content={tag.content}
-          isActive={activeTag.id === tag.id}
-          onClick={handleClick(tag)}
+          isActive={activeTag === tag.segment}
+          onClick={handleClick(tag.segment)}
           customStyle={TagLargeStyle}
         />
       ))}

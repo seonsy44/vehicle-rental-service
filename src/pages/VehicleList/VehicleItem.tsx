@@ -45,6 +45,7 @@ export default VehicleItem;
 const Container = styled.div`
   position: relative;
   ${flexBox('row', 'space-between')};
+  width: 100%;
   padding: 20px ${({ theme }) => theme.paddingHorizontal};
   border-bottom: 1px solid ${({ theme }) => theme.black};
   cursor: pointer;
