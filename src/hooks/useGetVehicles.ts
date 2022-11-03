@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { VehicleBasic, VehicleFuelType, VehicleSegment } from '../types';
 import axiosInstance from '../utils/axiosInstance';
 
@@ -15,8 +16,7 @@ type ResponseValues = {
 function useGetVehicles() {
   const [isLoading, setIsLoading] = useState(false);
   const [vehicles, setVehicles] = useState<VehicleBasic[]>([]);
-
-  //   const vehicles = useContext(VehiclesContext);
+  const navigate = useNavigate();
 
   const getVehicles = async (params?: GetVehicleValues) => {
     setIsLoading(true);
@@ -30,7 +30,7 @@ function useGetVehicles() {
       setVehicles(payload);
       setIsLoading(false);
     } else {
-      console.log(status);
+      navigate('/error', { state: { status } });
       setIsLoading(false);
     }
   };
