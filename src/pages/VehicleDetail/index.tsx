@@ -26,13 +26,10 @@ function VehicleDetail() {
         <title>
           {vehicle.attribute.brand} | {vehicle.attribute.name}
         </title>
-        <meta
-          property="og:title"
-          content={`${vehicle.attribute.brand} | ${vehicle.attribute.name}`}
-          data-react-helmet="true"
-        />
-        <meta property="og:description" content={`월 ${vehicle.amount.toLocaleString()} 원`} data-react-helmet="true" />
-        <meta property="og:image" content={vehicle.attribute.imageUrl} data-react-helmet="true" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${vehicle.attribute.brand} | ${vehicle.attribute.name}`} />
+        <meta property="og:description" content={`월 ${vehicle.amount.toLocaleString()} 원`} />
+        <meta property="og:image" content={vehicle.attribute.imageUrl} />
       </Helmet>
 
       <Container>
