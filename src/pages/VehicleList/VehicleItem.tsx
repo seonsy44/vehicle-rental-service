@@ -17,7 +17,7 @@ function VehicleItem({ vehicle }: VehicleItemProps) {
   const isWithinADay = (date: Date) => Date.now() - Date.parse(date.toString()) <= MS_PER_DAY;
 
   const handleClick = () => {
-    navigate(`/vehicles/${vehicle.id}`);
+    navigate(`/vehicles/${vehicle.id}`, { state: { vehicle } });
   };
 
   return (

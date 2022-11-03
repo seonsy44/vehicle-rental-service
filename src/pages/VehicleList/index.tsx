@@ -1,12 +1,13 @@
 import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Category from './Category';
 import Header from '../../components/Header';
 import useGetVehicles from '../../hooks/useGetVehicles';
 import VehicleItem from './VehicleItem';
 import { flexBox } from '../../styles/mixin';
 import { getSegment } from '../../utils/utils';
+import Container from '../../components/Container';
 
 function VehicleList() {
   const { isLoading, vehicles, getVehicles } = useGetVehicles();
@@ -19,7 +20,7 @@ function VehicleList() {
   }, [segment]);
 
   return (
-    <>
+    <Container customStyle={ContainerStyle}>
       <Header title="전체차량" />
       <Category segment={segment} setSearchParams={setSearchParams} />
 
@@ -28,11 +29,15 @@ function VehicleList() {
       {!isLoading && vehicles?.map((vehicle) => <VehicleItem key={vehicle.id} vehicle={vehicle} />)}
 
       {!isLoading && !vehicles?.length && <Notice>차량이 없습니다.</Notice>}
-    </>
+    </Container>
   );
 }
 
 export default VehicleList;
+
+const ContainerStyle = css`
+  ${flexBox('column', 'flex-start')};
+`;
 
 const Notice = styled.div`
   ${flexBox()};
