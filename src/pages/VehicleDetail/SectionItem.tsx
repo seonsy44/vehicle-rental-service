@@ -27,7 +27,6 @@ const Container = styled.div`
   font-size: 17px;
   font-weight: 700;
   line-height: 21px;
-  border: 2px solid red;
 
   > span:last-child {
     font-weight: 400;
