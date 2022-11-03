@@ -14,3 +14,19 @@ export const vehicleSegmentCategory: CategoryValues[] = [
   { id: 4, segment: 'D', content: '중형' },
   { id: 5, segment: 'C', content: '소형' },
 ];
+
+export const vehicleFuelType = {
+  gasoline: '가솔린',
+  ev: '전기',
+  hybrid: '하이브리드',
+};
+
+export const day: { [key: number]: string } = {
+  0: '일',
+  1: '월',
+  2: '화',
+  3: '수',
+  4: '목',
+  5: '금',
+  6: '토',
+};
