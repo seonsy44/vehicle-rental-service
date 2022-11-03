@@ -1,6 +1,8 @@
+import React from 'react';
+
 type SectionsValues = {
   title: string;
-  data: { [key: string]: unknown }[];
+  data: { key: string; [key: string]: unknown }[];
 };
 
 type SectionListProps = {
@@ -13,10 +15,12 @@ function SectionList({ sections, renderSectionHeader, renderItem }: SectionListP
   return (
     <>
       {sections.map((section) => (
-        <>
+        <React.Fragment key={section.title}>
           {renderSectionHeader(section)}
-          {section.data.map((item) => renderItem(item))}
-        </>
+          {section.data.map((item) => (
+            <React.Fragment key={item.key}>{renderItem(item)}</React.Fragment>
+          ))}
+        </React.Fragment>
       ))}
     </>
   );
