@@ -1,19 +1,15 @@
-import React from 'react';
-
-type ObjectProps = { [key: string]: unknown };
-
 type SectionsValues = {
-  title: unknown;
-  data: ObjectProps[];
+  title: string;
+  data: { [key: string]: unknown }[];
 };
 
 type SectionListProps = {
   sections: SectionsValues[];
-  renderItem: (item: ObjectProps) => React.ReactNode;
-  renderSectionHeader: (section: ObjectProps) => React.ReactNode;
+  renderSectionHeader: (section: any) => JSX.Element;
+  renderItem: (item: any) => JSX.Element;
 };
 
-function SectionList({ sections, renderItem, renderSectionHeader }: SectionListProps) {
+function SectionList({ sections, renderSectionHeader, renderItem }: SectionListProps) {
   return (
     <>
       {sections.map((section) => (
