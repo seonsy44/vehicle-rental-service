@@ -27,6 +27,7 @@ function VehicleDetail() {
           {vehicle.attribute.brand} | {vehicle.attribute.name}
         </title>
         <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://vehicle-rental-service.vercel.app/vehicles/${vehicle.id}`} />
         <meta property="og:title" content={`${vehicle.attribute.brand} | ${vehicle.attribute.name}`} />
         <meta property="og:description" content={`월 ${vehicle.amount.toLocaleString()} 원`} />
         <meta property="og:image" content={vehicle.attribute.imageUrl} />
