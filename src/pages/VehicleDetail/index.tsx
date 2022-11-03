@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
 import SectionList from '../../components/SectionList';
@@ -48,13 +48,6 @@ function VehicleDetail() {
 }
 
 export default VehicleDetail;
-
-// const ContainerStyle = css`
-//   overflow-y: scroll;
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
-// `;
 
 const Image = styled.img`
   width: 100%;
