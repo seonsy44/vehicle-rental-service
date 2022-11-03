@@ -31,7 +31,7 @@ function VehicleDetail() {
         <meta property="og:image" content={vehicle.attribute.imageUrl} />
       </Helmet>
 
-      <Container customStyle={ContainerStyle}>
+      <Container>
         <Header title="차량상세" hasBackButton />
         <Image alt={vehicle.attribute.name} src={vehicle.attribute.imageUrl} />
         <Title>
@@ -47,16 +47,15 @@ function VehicleDetail() {
 
 export default VehicleDetail;
 
-const ContainerStyle = css`
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
+// const ContainerStyle = css`
+//   overflow-y: scroll;
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+// `;
 
 const Image = styled.img`
   width: 100%;
-  height: 205px;
 `;
 
 const Title = styled.div`

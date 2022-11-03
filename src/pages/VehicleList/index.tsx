@@ -36,13 +36,14 @@ function VehicleList() {
 export default VehicleList;
 
 const ContainerStyle = css`
-  ${flexBox('column', 'flex-start')};
+  height: 100vh;
+  padding-bottom: ${({ theme }) => theme.paddingVertical};
 `;
 
 const Notice = styled.div`
   ${flexBox()};
-  flex-grow: 1;
   width: 100%;
+  height: calc(100% - 100px);
   font-size: 17px;
   font-weight: 700;
 `;

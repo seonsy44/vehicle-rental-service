@@ -75,6 +75,5 @@ const TextRegular = styled.div`
 `;
 
 const Image = styled.img`
-  width: 152px;
   height: 80px;
 `;

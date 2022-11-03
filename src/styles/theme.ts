@@ -7,5 +7,5 @@ export const colors = {
 
 export const padding = {
   paddingHorizontal: '20px',
-  paddingVertical: '0',
+  paddingVertical: '20px',
 };
