@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import TagSmall from '../../components/TagSmall';
 import { flexBox } from '../../styles/mixin';
@@ -12,31 +12,27 @@ type VehicleItemProps = {
 const MS_PER_DAY = 86400000;
 
 function VehicleItem({ vehicle }: VehicleItemProps) {
-  const navigate = useNavigate();
-
   const isWithinADay = (date: Date) => Date.now() - Date.parse(date.toString()) <= MS_PER_DAY;
 
-  const handleClick = () => {
-    navigate(`/vehicles/${vehicle.id}`, { state: { vehicle } });
-  };
-
   return (
-    <Container onClick={handleClick}>
-      {isWithinADay(vehicle.createdAt) && <TagSmall content="신규" customStyle={TagSmallStyle} />}
+    <Link to={`/vehicles/${vehicle.id}`} state={{ vehicle }}>
+      <Container>
+        {isWithinADay(vehicle.createdAt) && <TagSmall content="신규" customStyle={TagSmallStyle} />}
 
-      <Information>
-        <TextBold>
-          {vehicle.attribute.brand}
-          <br />
-          {vehicle.attribute.name}
-        </TextBold>
-        <TextRegular>
-          {vehicleSegment[vehicle.attribute.segment]} / {vehicle.attribute.fuelType}
-          <br />월 {vehicle.amount.toLocaleString()} 원 부터
-        </TextRegular>
-      </Information>
-      <Image alt={vehicle.attribute.name} src={vehicle.attribute.imageUrl} />
-    </Container>
+        <Information>
+          <TextBold>
+            {vehicle.attribute.brand}
+            <br />
+            {vehicle.attribute.name}
+          </TextBold>
+          <TextRegular>
+            {vehicleSegment[vehicle.attribute.segment]} / {vehicle.attribute.fuelType}
+            <br />월 {vehicle.amount.toLocaleString()} 원 부터
+          </TextRegular>
+        </Information>
+        <Image alt={vehicle.attribute.name} src={vehicle.attribute.imageUrl} />
+      </Container>
+    </Link>
   );
 }
 
