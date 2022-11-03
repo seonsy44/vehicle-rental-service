@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { HelmetProvider } from 'react-helmet-async';
 import GlobalStyle from './styles/GlobalStyle';
 import { colors, padding } from './styles/theme';
 import App from './App';
@@ -12,7 +13,9 @@ root.render(
     <GlobalStyle />
     <ThemeProvider theme={{ ...colors, ...padding }}>
       <BrowserRouter>
-        <App />
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>

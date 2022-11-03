@@ -1,4 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import styled, { css } from 'styled-components';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
@@ -20,16 +21,27 @@ function VehicleDetail() {
   const renderSectionItem = (item: { item?: string; content: string }) => <SectionItem item={item} />;
 
   return (
-    <Container customStyle={ContainerStyle}>
-      <Header title="차량상세" hasBackButton />
-      <Image alt={vehicle.attribute.name} src={vehicle.attribute.imageUrl} />
-      <Title>
-        <div>{vehicle.attribute.brand}</div>
-        <div>{vehicle.attribute.name}</div>
-      </Title>
-      <SectionItem item={{ content: `월 ${vehicle.amount.toLocaleString()} 원` }} />
-      <SectionList sections={sections} renderSectionHeader={renderSectionHeader} renderItem={renderSectionItem} />
-    </Container>
+    <>
+      <Helmet>
+        <title>
+          {vehicle.attribute.brand} | {vehicle.attribute.name}
+        </title>
+        <meta property="og:title" content={`${vehicle.attribute.brand} | ${vehicle.attribute.name}`} />
+        <meta property="og:description" content={`월 ${vehicle.amount.toLocaleString()} 원`} />
+        <meta property="og:image" content={vehicle.attribute.imageUrl} />
+      </Helmet>
+
+      <Container customStyle={ContainerStyle}>
+        <Header title="차량상세" hasBackButton />
+        <Image alt={vehicle.attribute.name} src={vehicle.attribute.imageUrl} />
+        <Title>
+          <div>{vehicle.attribute.brand}</div>
+          <div>{vehicle.attribute.name}</div>
+        </Title>
+        <SectionItem item={{ content: `월 ${vehicle.amount.toLocaleString()} 원` }} />
+        <SectionList sections={sections} renderSectionHeader={renderSectionHeader} renderItem={renderSectionItem} />
+      </Container>
+    </>
   );
 }
 
