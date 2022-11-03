@@ -10,9 +10,8 @@ import SectionHeader from './SectionHeader';
 import SectionItem from './SectionItem';
 
 function VehicleDetail() {
-  const {
-    state: { vehicle },
-  }: { state: { vehicle: VehicleBasic } } = useLocation();
+  const { state }: { state: { vehicle: VehicleBasic } } = useLocation();
+  const vehicle = state?.vehicle;
 
   if (!vehicle) return <Navigate to="/vehicles" />;
 
