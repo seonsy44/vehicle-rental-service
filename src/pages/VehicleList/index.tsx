@@ -6,25 +6,13 @@ import Header from '../../components/Header';
 import useGetVehicles from '../../hooks/useGetVehicles';
 import VehicleItem from './VehicleItem';
 import { flexBox } from '../../styles/mixin';
+import { getSegment } from '../../utils/utils';
 
 function VehicleList() {
   const { isLoading, vehicles, getVehicles } = useGetVehicles();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const segment = useMemo(() => {
-    switch (searchParams.get('segment')) {
-      case 'SUV':
-        return 'SUV';
-      case 'E':
-        return 'E';
-      case 'D':
-        return 'D';
-      case 'C':
-        return 'C';
-      default:
-        return '';
-    }
-  }, [searchParams]);
+  const segment = useMemo(() => getSegment(searchParams), [searchParams]);
 
   useEffect(() => {
     getVehicles({ segment });
