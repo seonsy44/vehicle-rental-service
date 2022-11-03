@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Container from '../../components/Container';
 import Header from '../../components/Header';
@@ -7,6 +7,8 @@ import { flexBox } from '../../styles/mixin';
 function Error() {
   const { state }: { state: { status: number } } = useLocation();
   const navigate = useNavigate();
+
+  if (!state) return <Navigate to="/vehicles" />;
 
   const handleClick = () => navigate(-2);
 
